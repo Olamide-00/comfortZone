@@ -22,11 +22,12 @@ export default function Categories() {
         >
             {
                 categories.map((item, index) => {
-                    let backgroundColor = "gray"
-                    let color= "#fff"
-                    let isActive 
+                    let isActive = item == activeCategory;
+                    let bg = isActive? (styles.active) : (null)
+                    let color = isActive? (styles.activeColor) : (null)
+                    
                     return(
-                        <TouchableOpacity key={index} style={[styles.container, backgroundColor]} onPress={() => setActiveCategory(index)}>
+                        <TouchableOpacity key={index} style={[styles.container,bg]} onPress={() => setActiveCategory(item)}>
                         <Text style={[styles.text, color]}> {item}</Text>
                         </TouchableOpacity>
                     )
@@ -41,7 +42,7 @@ export default function Categories() {
 const styles = StyleSheet.create({
     container: {
         marginTop: hp(0.8),
-        marginHorizontal: wp(3)
+        marginHorizontal: wp(2)
     },
     text: {
         fontSize: hp(3),
@@ -57,6 +58,14 @@ const styles = StyleSheet.create({
     categoriesText:{
         fontSize: hp(3.5),
         fontWeight: "600"
+    },
+    active: {
+        backgroundColor: "black",
+        color: "#fff",
+        borderRadius: 8
+    },
+    activeColor: {
+        color: "#fff"
     }
 
 })

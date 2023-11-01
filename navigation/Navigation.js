@@ -10,6 +10,7 @@ import Home from '../screens/home';
 import { auth } from '../config/firebase';
 import Cart from '../screens/cart';
 import Profile from '../screens/profile';
+import ProductPage from '../screens/product';
 
 import { Ionicons } from '@expo/vector-icons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -89,6 +90,7 @@ export default function Navigation () {
                     :
                      (<Stack.Screen name='AuthStack' component={AuthStack} />)
                 }
+                  <Stack.Screen name='ProductPage' component={ProductPage} />
            </Stack.Navigator>
         </NavigationContainer>
     )

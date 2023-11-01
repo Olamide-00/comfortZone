@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react'
 import { styles } from './style'
 import Header from '../../components/header'
 import { Form } from '../../components/form/Form';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, currenUser } from 'firebase/auth';
 
 
 import { auth } from "../../config/firebase"
@@ -18,14 +18,21 @@ export default function SignUp() {
     try{
       await createUserWithEmailAndPassword(auth, email, password)
     } catch(error) {
-      alert(error)
+      if(error.message.includes("auth/email-already-in-use")) {
+        alert("Email Already used")
+      } else if (error.message.includes("auth/weak-password")) {
+        alert("Password is too weak")
+      } else if (error.message.includes("auth/invalid-email")) {
+        alert("Invalid Email  Address")
+      } else {
+        alert(error.message)
+      }
     }
   }
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
       <View style={styles.root}>
-        <Header title={"Sign up"} />
+        <Header title={"Signup"} />
         <View style={styles.formContainer}>
           <Form  title={ "SignUp" }  type={"reg"} onPress={handleSignUp} />
         </View>

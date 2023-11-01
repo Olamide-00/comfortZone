@@ -2,16 +2,18 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, FlatList } from "react
 import { topDealData } from "../../data/data";
 import { FlashList } from "@shopify/flash-list";
 import  { widthPercentageToDP as wp, heightPercentageToDP as  hp } from 'react-native-responsive-screen';
-
+import { useNavigation } from "@react-navigation/native";
 
 
 
 
 export default function TopDealCard() {
 
+    const navigation = useNavigation();
+
     const renderItem = (({ item }) => {
         return(
-            <TouchableOpacity style={styles.container} >
+            <TouchableOpacity style={styles.container}  onPress={() => navigation.navigate("ProductPage", {...item})} >
               <View style={styles.imgContainer}>
                 <Image 
                     source={item.image}

@@ -21,7 +21,11 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password)
     } catch(error) {
-      alert(error)
+      if(error.message.includes("auth/invalid-login-credentials")) {
+        alert("Invalid Email or Password")
+      } else{
+        console.log(error)
+      }
     }finally{
       setIsLoading(false)
     }
@@ -32,7 +36,7 @@ export default function Login() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
       <KeyboardAvoidingView behavior="padding"  style={styles.root} >
           <View>
-              <Header title={"Log in"} />
+              <Header title={"Login"} />
               <View style={styles.formContainer}>
                   <Form  title={ "Login" } onPress={handleSignIn} />
               </View>

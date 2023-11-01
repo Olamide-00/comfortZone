@@ -3,16 +3,19 @@ import React from 'react'
 import { topDealData } from '../../data/data';
 import { Ionicons } from '@expo/vector-icons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 
 export default function MainCard() {
 
+    const navigation = useNavigation();
+
 
     const renderItem = (({ item }) => {
         return(
-            <TouchableOpacity style={styles.mainContainer} >
+            <TouchableOpacity style={styles.mainContainer} onPress={() => navigation.navigate("ProductPage", {...item})} >
                 <View style={styles.imageContainer}>
                     <Image 
                         source={item.image}
@@ -27,7 +30,7 @@ export default function MainCard() {
                             <Text style={styles.price}> ${item.price}</Text>
                        </View>
                        <TouchableOpacity>
-                        <Ionicons name='add-circle' color="black" size={25} />
+                        <Ionicons name='add-circle' color="black" size={30} />
                        </TouchableOpacity>
                     </View>
                 </View>
