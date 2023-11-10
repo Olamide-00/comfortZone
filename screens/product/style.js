@@ -21,10 +21,10 @@ export const styles = StyleSheet.create({
         borderRadius: 15
     },
     image: {
-        width: wp(100),
-        height: hp(50),
+        width: wp(90),
+        height: hp(40),
         resizeMode: "contain",
-        marginTop: hp(-3),
+        marginTop: hp(4),
         paddingBottom: hp(2),
      },
     headerContainer:{

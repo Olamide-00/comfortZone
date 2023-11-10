@@ -1,5 +1,5 @@
 import { View, Text,  FlatList,TouchableOpacity,Image, StyleSheet } from 'react-native'
-import React from 'react'
+import React, {useContext} from 'react'
 import { topDealData } from '../../data/data';
 import { Ionicons } from '@expo/vector-icons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
@@ -11,7 +11,6 @@ import { useNavigation } from '@react-navigation/native';
 export default function MainCard() {
 
     const navigation = useNavigation();
-
 
     const renderItem = (({ item }) => {
         return(
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
         height: hp(20),
         resizeMode: "contain",
         position: 'absolute',
-        top: hp(-2)
+        top: hp(-1)
     },
     details: {
         flexDirection: "row",

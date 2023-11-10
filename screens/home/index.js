@@ -1,11 +1,12 @@
 import { View, Text,  Image, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react';
+import React, {useContext} from 'react';
 import { styles } from './style';
 import { Ionicons } from '@expo/vector-icons';
 import TopDealCard from '../../components/cards/topDealCard';
 import Categories from '../../components/category/categories';
 import MainCard from '../../components/cards/mainCard';
 import { ScrollView } from 'react-native-gesture-handler';
+import { cartContext } from '../../context/cartContext/cartContext';
 
 
 
@@ -15,12 +16,16 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function Home() {
+
+  const {cartItem, setCartItem } = useContext(cartContext);
+
+
   return (
     <View style={styles.root}>
       <View style={styles.headerContainer}>
         <View>
           <Image 
-            source={require('../../assets/chair2.png')}
+            source={require("./../../assets/olamide.jpg")}
             style={styles.profileIcon}
           />
         </View>
@@ -44,7 +49,7 @@ export default function Home() {
         </TouchableOpacity>
       </View>
       <View>
-        <TopDealCard />
+        <TopDealCard  />
       </View>
       <View>
         <Categories />

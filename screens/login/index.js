@@ -23,8 +23,10 @@ export default function Login() {
     } catch(error) {
       if(error.message.includes("auth/invalid-login-credentials")) {
         alert("Invalid Email or Password")
-      } else{
-        console.log(error)
+      } else if (error.message.includes("auth/network-request-failed")) {
+        alert("Network error")
+      } else {
+        alert(error.message)
       }
     }finally{
       setIsLoading(false)

@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
         width: wp(20),
         height: hp(30),
         resizeMode: "contain",
-        borderRadius: 15
+        marginTop: hp(1)
     },
     textContainer: {
-        marginTop: hp(-6)
+        marginTop: hp(-7)
     },
     text: {
         fontSize: hp(2.2),

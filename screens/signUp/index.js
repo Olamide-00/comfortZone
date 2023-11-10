@@ -1,4 +1,4 @@
-import { View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { View, Text, TouchableWithoutFeedback, Keyboard, ActivityIndicator } from 'react-native'
 import React, { useState, useContext } from 'react'
 import { styles } from './style'
 import Header from '../../components/header'
@@ -11,10 +11,10 @@ import { UserContext } from '../../context/UserContext';
 
 export default function SignUp() {
 
-  const {email, password} = useContext(UserContext);
-
+  const {email, password, isLoading, setIsLoading} = useContext(UserContext);
 
   const handleSignUp = async () => {
+    setIsLoading(true)
     try{
       await createUserWithEmailAndPassword(auth, email, password)
     } catch(error) {
@@ -24,9 +24,13 @@ export default function SignUp() {
         alert("Password is too weak")
       } else if (error.message.includes("auth/invalid-email")) {
         alert("Invalid Email  Address")
+      } else if (error.message.includes("auth/network-request-failed")) {
+        alert("Network error")
       } else {
         alert(error.message)
       }
+    } finally{
+      setIsLoading(false)
     }
   }
   return (
@@ -34,7 +38,7 @@ export default function SignUp() {
       <View style={styles.root}>
         <Header title={"Signup"} />
         <View style={styles.formContainer}>
-          <Form  title={ "SignUp" }  type={"reg"} onPress={handleSignUp} />
+        <Form  title={ "SignUp" }  type={"reg"} onPress={handleSignUp}/>
         </View>
       </View>
     </TouchableWithoutFeedback>

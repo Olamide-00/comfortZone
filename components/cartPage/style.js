@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     },
     quantity: {
         fontSize: hp(2.5),
-        fontWeight: "00"
+        fontWeight: "500"
     },
     
 

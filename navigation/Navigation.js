@@ -70,8 +70,6 @@ function HomeTab() {
 }
 
 
-
-
 export default function Navigation () {
 
     const [user, setUser] = useState(User || null);
